@@ -714,8 +714,8 @@ const PUBLISHER_URL = 'https://marketplace.visualstudio.com/publishers/zovo';
 // getPro and payWithPayPal are the license module's commands. The footer runs them instead of opening the general
 // Sponsors page; payWithPayPal is '' when this extension has no PayPal command, and the plain PayPal link stays.
 const PRO = {
-  "getPro": "zovoIptables.getPro",
-  "payWithPayPal": "zovoIptables.payWithPayPal",
+  "getPro": "zovoPulumi.getPro",
+  "payWithPayPal": "zovoPulumi.payWithPayPal",
   "tier": "https://github.com/sponsors/theluckystrike/sponsorships?tier_id=679878",
   "usd": 19
 };
