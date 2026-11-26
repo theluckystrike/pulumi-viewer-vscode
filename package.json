@@ -1,0 +1,320 @@
+{
+  "name": "zovo-pulumi-viewer",
+  "displayName": "Pulumi Stack & Policy Viewer",
+  "description": "Inspect Pulumi.yaml, Pulumi.yml and Pulumi.*.yaml stack files in VS Code: project/runtime metadata, masked secure config values and static secret-hygiene findings, offline.",
+  "version": "0.1.0",
+  "publisher": "zovo",
+  "license": "MIT",
+  "icon": "icon.png",
+  "galleryBanner": {
+    "color": "#1E1B4B",
+    "theme": "dark"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/theluckystrike/pulumi-viewer-vscode"
+  },
+  "bugs": {
+    "url": "https://github.com/theluckystrike/pulumi-viewer-vscode/issues"
+  },
+  "homepage": "https://github.com/theluckystrike/pulumi-viewer-vscode#readme",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Other",
+    "Visualization"
+  ],
+  "keywords": [
+    "pulumi",
+    "iac",
+    "infrastructure",
+    "yaml",
+    "secrets",
+    "devops",
+    "security",
+    "viewer"
+  ],
+  "main": "./src/extension.js",
+  "activationEvents": [
+    "onUri",
+    "onCustomEditor:zovo-pulumi.viewer"
+  ],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": true
+    },
+    "virtualWorkspaces": true
+  },
+  "contributes": {
+    "customEditors": [
+      {
+        "viewType": "zovo-pulumi.viewer",
+        "displayName": "Pulumi Stack & Policy Viewer",
+        "selector": [
+          {
+            "filenamePattern": "Pulumi.yaml"
+          },
+          {
+            "filenamePattern": "Pulumi.yml"
+          },
+          {
+            "filenamePattern": "Pulumi.*.yaml"
+          },
+          {
+            "filenamePattern": "Pulumi.*.yml"
+          }
+        ],
+        "priority": "default"
+      }
+    ],
+    "commands": [
+      {
+        "command": "zovoPulumi.openWith",
+        "title": "Open in Pulumi Stack & Policy Viewer",
+        "category": "Pulumi Stack & Policy Viewer",
+        "icon": "$(layers)"
+      },
+      {
+        "command": "zovoPulumi.openSample",
+        "title": "Open the Sample Pulumi Stack",
+        "category": "Pulumi Stack & Policy Viewer"
+      },
+      {
+        "command": "zovoPulumi.openWalkthrough",
+        "title": "Get Started",
+        "category": "Pulumi Stack & Policy Viewer"
+      },
+      {
+        "command": "zovoPulumi.moreViewers",
+        "title": "More free tools by Zovo",
+        "category": "Pulumi Stack & Policy Viewer"
+      },
+      {
+        "command": "zovoPulumi.supportDeveloper",
+        "title": "Support the developer",
+        "category": "Pulumi Stack & Policy Viewer"
+      },
+      {
+        "command": "zovoPulumi.auditStack",
+        "title": "Audit Pulumi stack secret hygiene (Pro, 1 free try)",
+        "category": "Pulumi Stack & Policy Viewer"
+      },
+      {
+        "command": "zovoPulumi.diffStacks",
+        "title": "Compare two Pulumi stack files (Pro, 1 free try)",
+        "category": "Pulumi Stack & Policy Viewer"
+      },
+      {
+        "command": "zovoPulumi.exportConfigDoc",
+        "title": "Export redacted config inventory (Pro, 1 free try)",
+        "category": "Pulumi Stack & Policy Viewer"
+      },
+      {
+        "command": "zovoPulumi.zovoPro.auditStack",
+        "title": "Zovo Pro: Audit Pulumi stack secret hygiene"
+      },
+      {
+        "command": "zovoPulumi.zovoPro.diffStacks",
+        "title": "Zovo Pro: Compare two Pulumi stack files"
+      },
+      {
+        "command": "zovoPulumi.zovoPro.exportConfigDoc",
+        "title": "Zovo Pro: Export redacted config inventory"
+      },
+      {
+        "command": "zovoPulumi.zovoTitle.auditStack",
+        "title": "Zovo Pro: Audit Pulumi stack secret hygiene"
+      },
+      {
+        "command": "zovoPulumi.zovoTitle.diffStacks",
+        "title": "Zovo Pro: Compare two Pulumi stack files"
+      },
+      {
+        "command": "zovoPulumi.zovoTitle.exportConfigDoc",
+        "title": "Zovo Pro: Export redacted config inventory"
+      },
+      {
+        "command": "zovoPulumi.getPro",
+        "title": "Get Zovo Pro (USD 19 once, all Zovo extensions)",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoPulumi.payWithPayPal",
+        "title": "Pay for Zovo Pro with PayPal (USD 19, team of 5 USD 59)",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoPulumi.unlockWithSponsors",
+        "title": "I already paid: unlock with GitHub Sponsors",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoPulumi.enterLicenseKey",
+        "title": "Enter Zovo Pro license key",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoPulumi.removeLicense",
+        "title": "Remove Zovo Pro from this editor",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoPulumi.payByCard",
+        "title": "Pay for Zovo Pro by card (USD 19)",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoPulumi.enterKey",
+        "title": "Enter a key",
+        "category": "Zovo Pro"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "zovoPulumi.zovoTitle.auditStack",
+          "when": "activeCustomEditorId == 'zovo-pulumi.viewer' && config.zovoPulumi.showProTools",
+          "group": "zovoPro@1"
+        },
+        {
+          "command": "zovoPulumi.zovoTitle.diffStacks",
+          "when": "activeCustomEditorId == 'zovo-pulumi.viewer' && config.zovoPulumi.showProTools",
+          "group": "zovoPro@2"
+        },
+        {
+          "command": "zovoPulumi.zovoTitle.exportConfigDoc",
+          "when": "activeCustomEditorId == 'zovo-pulumi.viewer' && config.zovoPulumi.showProTools",
+          "group": "zovoPro@3"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "zovoPulumi.openWith",
+          "when": "resourceFilename =~ /^Pulumi(\\.[^.]+)?\\.ya?ml$/i && !explorerResourceIsFolder",
+          "group": "navigation@9"
+        },
+        {
+          "command": "zovoPulumi.zovoPro.auditStack",
+          "when": "resourceFilename =~ /^Pulumi(\\.[^.]+)?\\.ya?ml$/i && !explorerResourceIsFolder && config.zovoPulumi.showProTools",
+          "group": "zovoPro@1"
+        },
+        {
+          "command": "zovoPulumi.zovoPro.diffStacks",
+          "when": "resourceFilename =~ /^Pulumi(\\.[^.]+)?\\.ya?ml$/i && !explorerResourceIsFolder && config.zovoPulumi.showProTools",
+          "group": "zovoPro@2"
+        },
+        {
+          "command": "zovoPulumi.zovoPro.exportConfigDoc",
+          "when": "resourceFilename =~ /^Pulumi(\\.[^.]+)?\\.ya?ml$/i && !explorerResourceIsFolder && config.zovoPulumi.showProTools",
+          "group": "zovoPro@3"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "zovoPulumi.auditStack",
+          "when": "config.zovoPulumi.showProTools"
+        },
+        {
+          "command": "zovoPulumi.diffStacks",
+          "when": "config.zovoPulumi.showProTools"
+        },
+        {
+          "command": "zovoPulumi.exportConfigDoc",
+          "when": "config.zovoPulumi.showProTools"
+        },
+        {
+          "command": "zovoPulumi.zovoPro.auditStack",
+          "when": "false"
+        },
+        {
+          "command": "zovoPulumi.zovoPro.diffStacks",
+          "when": "false"
+        },
+        {
+          "command": "zovoPulumi.zovoPro.exportConfigDoc",
+          "when": "false"
+        },
+        {
+          "command": "zovoPulumi.zovoTitle.auditStack",
+          "when": "false"
+        },
+        {
+          "command": "zovoPulumi.zovoTitle.diffStacks",
+          "when": "false"
+        },
+        {
+          "command": "zovoPulumi.zovoTitle.exportConfigDoc",
+          "when": "false"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Pulumi Stack & Policy Viewer",
+      "properties": {
+        "zovoPulumi.maxFileMB": {
+          "type": "number",
+          "default": 16,
+          "minimum": 1,
+          "maximum": 128,
+          "description": "Files up to this size open in Pulumi Stack & Policy Viewer."
+        },
+        "zovoPulumi.pageSize": {
+          "type": "number",
+          "default": 100,
+          "minimum": 20,
+          "maximum": 500,
+          "description": "Pulumi config entries shown on one page."
+        },
+        "zovoPulumi.showProTools": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the Zovo Pro tools (stack secret-hygiene audit, stack diff and redacted config export) in the Command Palette, the Explorer menu, the editor title menu and the viewer toolbar. Everything free stays visible."
+        },
+        "zovoPulumi.askForRating": {
+          "type": "boolean",
+          "default": true,
+          "description": "Ask once for a store rating after 3 Pulumi stack files open without an error across 2 days. Choosing No thanks never asks again. Nothing is sent anywhere."
+        },
+        "zovoPulumi.showSupportLinks": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the small Rate, More free tools and Zovo Pro links at the bottom of the viewer. Nothing is sent anywhere."
+        },
+        "zovo.pulview.trial.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the 7-day Zovo Pro trial button in the Pro panel."
+        }
+      }
+    },
+    "walkthroughs": [
+      {
+        "id": "zovoPulumi.start",
+        "title": "Get started with Pulumi Stack & Policy Viewer",
+        "description": "Inspect Pulumi.yaml, Pulumi.yml and Pulumi.*.yaml stack files in VS Code: project/runtime metadata, masked secure config values and static secret-hygiene findings, offline.",
+        "steps": [
+          {
+            "id": "open",
+            "title": "Open a Pulumi project or stack file",
+            "description": "Click any Pulumi.yaml, Pulumi.yml, Pulumi.*.yaml or Pulumi.*.yml file in the Explorer, or run Open in Pulumi Stack & Policy Viewer.\n[Open the sample Pulumi stack](command:zovoPulumi.openSample)",
+            "media": {
+              "image": "images/screenshot.png",
+              "altText": "A Pulumi stack YAML file open in the viewer showing project metadata, masked secure values and static secret-hygiene findings."
+            },
+            "completionEvents": [
+              "onCommand:zovoPulumi.openSample"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "scripts": {
+    "test": "node scripts/test.js",
+    "package": "npx -y @vscode/vsce@3 package --no-dependencies"
+  },
+  "sponsor": {
+    "url": "https://github.com/sponsors/theluckystrike/sponsorships?tier_id=679878"
+  }
+}

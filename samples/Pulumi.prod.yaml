@@ -1,0 +1,10 @@
+secretsprovider: awskms://alias/pulumi-prod-key?region=us-east-1
+encryptionsalt: v1:exampleSaltBase64Value==:v1:exampleKeyHash==
+config:
+  aws:region: us-east-1
+  app:environment: prod
+  app:replicas: "6"
+  app:dbPassword:
+    secure: AAABAC9exampleEncryptedProdPasswordCiphertext==
+  app:apiToken:
+    secure: AAABAC8exampleEncryptedProdTokenCiphertext==

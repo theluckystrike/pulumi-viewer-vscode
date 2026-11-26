@@ -1,0 +1,8 @@
+config:
+  aws:region: us-east-1
+  app:environment: dev
+  app:replicas: "2"
+  app:dbPassword: dev_example_plaintext_pw
+  app:apiToken:
+    secure: AAABAC7exampleCiphertextValueDoNotUseInProduction==
+  app:storageConnection: "DefaultEndpointsProtocol=https;AccountName=devacct;AccountKey=ZGV2LWV4YW1wbGUtYmFzZTY0LWtleS1ub3QtcmVhbA=="
